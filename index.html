@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUČKA NOČ 2026 | 7.8.2026</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Bledenje in zamik za celotno ozadje menija */
+        #mobile-menu {
+            transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+            opacity: 0;
+            transform: translateY(-8px);
+            pointer-events: none; /* Prepreči klike, ko je meni neviden */
+        }
+
+        /* Ko je meni odprt */
+        #mobile-menu.open {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Animiranje posameznih povezav */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #mobile-menu .mobile-link {
+            opacity: 0;
+        }
+
+        #mobile-menu.open .mobile-link {
+            animation: slideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        #mobile-menu.open .mobile-link:nth-child(1) { animation-delay: 0.05s; }
+        #mobile-menu.open .mobile-link:nth-child(2) { animation-delay: 0.10s; }
+        #mobile-menu.open .mobile-link:nth-child(3) { animation-delay: 0.15s; }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 font-sans antialiased selection:bg-purple-500 selection:text-white">
+
+    <!-- NAVIGACIJA -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800/50">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+            <!-- Logo / Naslov -->
+            <a href="#" class="text-xl font-black uppercase tracking-wider text-white">
+                Lučka noč <span class="text-purple-500">2026</span>
+            </a>
+
+            <!-- Povezave za večje zaslone (skrito na mobilnikih) -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#nastopajoci" class="text-sm font-medium text-zinc-300 hover:text-white transition">Nastopajoči</a>
+                <a href="#galerija" class="text-sm font-medium text-zinc-300 hover:text-white transition">Galerija</a>
+                <a href="#info" class="text-sm font-medium text-zinc-300 hover:text-white transition">Informacije</a>
+            </nav>
+
+            <!-- Gumb za mobilni meni (Prikazan le na mobilnikih - pod md breakpointom) -->
+            <button id="mobile-menu-btn" type="button" aria-label="Odpri meni" class="block md:hidden p-2 text-white focus:outline-none">
+                <svg class="w-7 h-7 text-white" style="width: 28px; height: 28px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobilni Dropdown Meni (enojen in pravilno postavljen) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-zinc-900/95 border-b border-zinc-800 px-6 pt-2 pb-6 flex flex-col gap-2">
+            <a href="#nastopajoci" class="mobile-link text-zinc-300 hover:text-white font-medium py-3 border-b border-zinc-800/50 opacity-0">
+                Nastopajoči
+            </a>
+            <a href="#galerija" class="mobile-link text-zinc-300 hover:text-white font-medium py-3 border-b border-zinc-800/50 opacity-0">
+                Galerija
+            </a>
+            <a href="#info" class="mobile-link text-zinc-300 hover:text-white font-medium py-3 opacity-0">
+                Informacije
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SEKCIJA Z SLIKO V OZADJU -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-zinc-950">
+        <!-- Slika v ozadju -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1920&q=80" 
+                alt="Koncert ozadje" 
+                class="w-full h-full object-cover opacity-25" />
+            <div class="absolute inset-0 bg-gradient-to-b from-zinc-950/80 via-zinc-950/60 to-zinc-950"></div>
+        </div>
+
+        <!-- Vsebina Hero sekcije -->
+        <div class="relative z-10 max-w-4xl mx-auto text-center px-8 py-12 sm:px-14 sm:py-16">
+             <header class="min-h-screen pt-24 pb-12 flex flex-col items-center justify-center text-center px-4 bg-gradient-to-b from-purple-950/30 via-zinc-950 to-zinc-950">
+                <span class="bg-purple-500/10 text-purple-400 border border-purple-500/30 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase mb-6">
+                    Vstop prost!
+                </span>
+                
+                <h1 class="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight uppercase mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-zinc-400">
+                    LUČKA NOČ 2026
+                </h1>
+                
+                <p class="text-xl sm:text-2xl text-purple-300 font-medium max-w-2xl mb-2">
+                    PRIDI. ZAPOJ. DOŽIVI.
+                </p>
+                <p class="text-lg sm:text-xl text-zinc-400 max-w-xl">
+                    Petek, 7.8.2026 • 21:00
+                </p>
+                <p class="text-lg sm:text-xl text-zinc-400 max-w-xl mb-10">
+                    Prireditveni prostor Luče
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 w-full max-w-md justify-center">
+                    <a href="#nastopajoci" class="w-full sm:w-auto bg-purple-600 hover:bg-purple-500 text-white font-bold py-3.5 px-8 rounded-xl shadow-lg shadow-purple-600/25 transition text-center">
+                        Preveri nastopajoče
+                    </a>
+                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Lu%C4%8Dka+no%C4%8D+2026&dates=20260807T190000Z/20260808T020000Z&details=Nepozaben+ve%C4%8Der+glasbe%2C+svetlobe+in+dru%C5%BEenja+pod+zvezdami.&location=Lu%C4%8De&sf=true&output=xml" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="w-full sm:w-auto bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-zinc-700 font-bold py-3.5 px-8 rounded-xl transition text-center">
+                        📅 Dodaj v koledar
+                    </a>
+
+                </div>
+            </header>
+        </div>
+    </section>
+
+    <div class="max-w-4xl mx-auto px-4 my-8 flex items-center justify-center">
+        <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-purple-500/20 to-transparent"></div>
+    </div>
+
+    <!-- LINEUP SECTION -->
+    <section id="nastopajoci" class="max-w-4xl mx-auto py-20 px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl sm:text-4xl font-extrabold uppercase tracking-wide text-white">Nastopajoči</h2>
+            <p class="text-zinc-400 mt-2">Razpored dogajanja • 7.8.2026</p>
+        </div>
+
+        <div class="space-y-6">
+            <!-- Druga Stran -->
+            <div class="p-6 bg-purple-950/20 rounded-2xl border border-purple-500/40 flex flex-col gap-5 hover:border-purple-500 transition shadow-lg shadow-purple-900/10">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                    <div class="flex items-center gap-5">
+                        <img src="./druga_stran_logo.jpg" 
+                            alt="Druga Stran Logo" 
+                            class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover border border-purple-500/30 flex-shrink-0" />
+                        <div>
+                            <span class="text-xs font-semibold text-purple-400 uppercase tracking-widest">Glavni organizator & Osrednja točka večera</span>
+                            <h3 class="text-3xl font-black text-white mt-1">Druga Stran</h3>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between sm:justify-end gap-6 w-full sm:w-auto">
+                        <span class="text-2xl font-mono font-bold text-purple-400">22:15</span>
+                        <!-- Socialne ikone -->
+                        <div class="flex items-center gap-3">
+                            <a href="https://www.facebook.com/p/Druga-Stran-100084127879920/" target="_blank" rel="noopener noreferrer" aria-label="Druga Stran Facebook" class="p-2 text-zinc-400 hover:text-purple-400 bg-zinc-900/80 hover:bg-zinc-800 rounded-lg border border-zinc-800 transition">
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                            </a>
+                            <a href="https://instagram.com/druga.stran/" target="_blank" rel="noopener noreferrer" aria-label="Druga Stran Instagram" class="p-2 text-zinc-400 hover:text-purple-400 bg-zinc-900/80 hover:bg-zinc-800 rounded-lg border border-zinc-800 transition">
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="w-full aspect-[1080/721] rounded-xl overflow-hidden border border-purple-500/20 mt-2">
+                    <img src="./druga_stran_slika.jpg" 
+                        alt="Druga Stran Band" 
+                        class="w-full h-auto object-cover" />
+                </div>
+            </div>
+
+            <!-- Čufti -->
+            <div class="p-6 bg-zinc-900/90 rounded-2xl border border-zinc-800/80 flex flex-col gap-5 hover:border-purple-500/50 transition">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                    <div class="flex items-center gap-5">
+                        <img src="./cufti_logo.png" 
+                            alt="Čufti Logo" 
+                            class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover border border-zinc-700 flex-shrink-0" />
+                        <div>
+                            <span class="text-xs font-semibold text-zinc-400 uppercase tracking-widest">Gost</span>
+                            <h3 class="text-2xl font-bold text-white mt-1">Čufti</h3>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between sm:justify-end gap-6 w-full sm:w-auto">
+                        <span class="text-2xl font-mono font-bold text-purple-400">21:00</span>
+                        <!-- Socialne ikone -->
+                        <div class="flex items-center gap-3">
+                            <a href="https://www.facebook.com/people/Klapa-%C4%8Cufti/61584534282558/" target="_blank" rel="noopener noreferrer" aria-label="Čufti Facebook" class="p-2 text-zinc-400 hover:text-purple-400 bg-zinc-950/60 hover:bg-zinc-800 rounded-lg border border-zinc-800 transition">
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                            </a>
+                            <a href="https://instagram.com/klapa_cufti/" target="_blank" rel="noopener noreferrer" aria-label="Čufti Instagram" class="p-2 text-zinc-400 hover:text-purple-400 bg-zinc-950/60 hover:bg-zinc-800 rounded-lg border border-zinc-800 transition">
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full aspect-[1080/721] rounded-xl overflow-hidden border border-zinc-800 mt-2">
+                    <img src="./cufti_slika.jpg" 
+                        alt="Čufti Band" 
+                        class="w-full h-auto object-cover" />
+                </div>
+            </div>
+
+            <!-- Brass Section -->
+            <div class="p-6 bg-zinc-900/60 rounded-2xl border border-zinc-800/60 flex flex-col sm:flex-row justify-between sm:items-center gap-4 hover:border-purple-500/50 transition">
+                <div>
+                    <span class="text-xs font-semibold text-amber-400 uppercase tracking-widest">Gost</span>
+                    <h3 class="text-xl font-bold text-white mt-1">Brass Section</h3>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-6">
+                    <span class="text-xl font-mono font-bold text-zinc-300">23:15</span>
+                </div>
+            </div>
+
+            <!-- Viva la Musica -->
+            <div class="p-6 bg-zinc-900/60 rounded-2xl border border-zinc-800/60 flex flex-col sm:flex-row justify-between sm:items-center gap-4 hover:border-purple-500/50 transition">
+                <div>
+                    <span class="text-xs font-semibold text-amber-400 uppercase tracking-widest">Gost</span>
+                    <h3 class="text-xl font-bold text-white mt-1">Viva la Musica</h3>
+                </div>
+                <div class="flex items-center justify-between sm:justify-end gap-6">
+                    <span class="text-xl font-mono font-bold text-zinc-300">0:00</span>
+                </div>
+            </div>
+
+            
+        </div>
+    </section>
+
+    <!-- DIVIDER -->
+    <div class="max-w-4xl mx-auto px-4 my-8 flex items-center justify-center">
+        <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-purple-500/20 to-transparent"></div>
+    </div>
+
+    <!-- PHOTO GALLERY SECTION -->
+    <section id="galerija" class="max-w-5xl mx-auto py-16 px-4">
+        <h2 class="text-3xl font-extrabold uppercase text-center mb-8">Nekaj utrinkov preteklih dogodkov</h2>
+        
+        <div class="space-y-4">
+            <!-- Zgornja vrstica: 2 LEŽEČI sliki -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
+                <!-- Slika 1 (Band na odru) -->
+                <div class="aspect-[16/10] bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 flex items-center justify-center group relative">
+                    <img src="./slika1.jpg" alt="Slika 1" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300">
+                </div>
+
+                <!-- Slika 3 (Celotna skupina z publiko) -->
+                <div class="aspect-[16/10] bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 flex items-center justify-center group relative">
+                    <img src="./slika2.jpg" alt="Slika 2" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300">
+                </div>
+            </div>
+
+            <!-- Spodnja vrstica: 3 POKONČNE slike -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <!-- Slika 3 (Kitarist 1) -->
+                <div class="aspect-[3/4] bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 flex items-center justify-center group relative">
+                    <img src="./slika3.jpg" alt="Slika 3" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-300">
+                </div>
+
+                <!-- Slika 4 (Pevec) -->
+                <div class="aspect-[3/4] bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 flex items-center justify-center group relative">
+                    <img src="./slika4.jpg" alt="Slika 4" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-300">
+                </div>
+
+                <!-- Slika 5 (Kitarist 2) -->
+                <div class="aspect-[3/4] bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 flex items-center justify-center group relative">
+                    <img src="./slika5.jpg" alt="Slika 5" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-300">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VENUE & PRACTICAL INFO SECTION -->
+    <section id="info" class="max-w-5xl mx-auto py-20 px-4 border-t border-zinc-900">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+            <div>
+                <h2 class="text-3xl font-extrabold uppercase mb-6">KLJUČNE INFORMACIJE</h2>
+                <div class="space-y-6 text-zinc-300">
+                    <div>
+                        <h3 class="font-bold text-white text-lg">📍 Lokacija</h3>
+                        <p class="text-zinc-400">Prireditveni prostor Luče</p>
+                        <p class="text-zinc-400">Raduha 43, Luče</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-lg">🍹 Hrana & Pijača</h3>
+                        <p class="text-zinc-400">Na prizorišču bo poskrbljeno za pijačo in prigrizke.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-lg">🌧️ V primeru dežja</h3>
+                        <p class="text-zinc-400">V primeru slabega vremena se dogodek prestavi v pokrit prostor na lokaciji.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-lg">🔞 Starostna omejitev - JE NI</h3>
+                        <p class="text-zinc-400">Vabljeni ljubitelji dobre glasbe vseh starosti!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Google Map Embed -->
+            <div class="w-full h-80 rounded-2xl overflow-hidden border border-zinc-800 shadow-xl">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2753.8642738910484!2d14.747184276856428!3d46.35222097424564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477a76059e7a2bd3%3A0x6b8eb7c5694d80a1!2sRaduha%2043%2C%203334%20Lu%C4%8De!5e0!3m2!1ssl!2ssi!4v1710000000000!5m2!1ssl!2ssi" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIVIDER -->
+    <div class="max-w-4xl mx-auto px-4 my-8 flex items-center justify-center">
+        <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-purple-500/20 to-transparent"></div>
+    </div>
+
+    <!-- SPONZORJI & PARTNERJI -->
+    <section id="sponzorji" class="max-w-md mx-auto py-12 px-4 text-center">
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-zinc-500 mb-8">
+            Dogodek podpirata
+        </h3>
+        
+        <!-- Mreža za 2 pokončna sponzorja -->
+        <div class="grid grid-cols-2 gap-6 sm:gap-8 justify-items-center">
+            
+            <!-- Sponzor 1 / Občina Luče -->
+            <a href="https://www.luce.si" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="p-6 bg-zinc-900/50 rounded-2xl border border-zinc-800/60 w-full max-w-[180px] h-44 sm:h-48 flex items-center justify-center hover:border-purple-500/40 transition duration-300">
+                <img 
+                    src="obcina_logo.jpeg" 
+                    alt="Sponzor 1" 
+                    class="max-h-32 max-w-[85%] w-auto object-contain grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition duration-300" 
+                />
+            </a>
+
+            <!-- Sponzor 2 / PGD Luče -->
+            <a
+                href="https://www.facebook.com/pgd.luce.1/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="p-6 bg-zinc-900/50 rounded-2xl border border-zinc-800/60 w-full max-w-[180px] h-44 sm:h-48 flex items-center justify-center hover:border-purple-500/40 transition duration-300">
+                <img 
+                    src="pgd_logo.jpeg" 
+                    alt="Sponzor 2" 
+                    class="max-h-32 max-w-[85%] w-auto object-contain grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition duration-300" 
+                />
+            </a>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-zinc-900 py-10 text-center text-zinc-500 text-sm">
+        <div class="max-w-5xl mx-auto px-4 space-y-4">
+            <p>Organizator: <span class="text-zinc-300 font-semibold">Druga Stran</span></p>
+            <p class="text-xs text-zinc-600">© 2026 Lučka Noč. Vse pravice pridržane.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT ZA HAMBURGER MENI -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- 1. MOBILNI MENI LOGIKA ---
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+
+            const hamburgerPath = "M4 6h16M4 12h16M4 18h16";
+            const closePath = "M6 18L18 6M6 6l12 12";
+
+            function closeMenu() {
+                if (!mobileMenu) return;
+                mobileMenu.classList.remove('open');
+                menuIcon.setAttribute('d', hamburgerPath);
+                setTimeout(() => {
+                    if (!mobileMenu.classList.contains('open')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }, 250);
+            }
+
+            function openMenu() {
+                if (!mobileMenu) return;
+                mobileMenu.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    mobileMenu.classList.add('open');
+                });
+                menuIcon.setAttribute('d', closePath);
+            }
+
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', function() {
+                    if (mobileMenu.classList.contains('open')) {
+                        closeMenu();
+                    } else {
+                        openMenu();
+                    }
+                });
+            }
+
+            // --- 2. POČASNEJŠI & GLADKI SCROLL (ZAVZEMA TUDI DOMOV / LOGO) ---
+            function smoothScrollTo(targetY, duration) {
+                const startPosition = window.pageYOffset;
+                const distance = targetY - startPosition;
+                let startTime = null;
+
+                // Easing funkcija za naravno upočasnjevanje pred ciljem (easeInOutCubic)
+                function easeInOutCubic(t) {
+                    return t < 0.5 
+                        ? 4 * t * t * t 
+                        : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                }
+
+                function animation(currentTime) {
+                    if (startTime === null) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const progress = Math.min(timeElapsed / duration, 1);
+                    const easeProgress = easeInOutCubic(progress);
+
+                    window.scrollTo(0, startPosition + distance * easeProgress);
+
+                    if (timeElapsed < duration) {
+                        requestAnimationFrame(animation);
+                    }
+                }
+
+                requestAnimationFrame(animation);
+            }
+
+            // Nastavimo poslušalce na VSE lokalne povezave (vključno z href="#" za domov)
+            const allAnchorLinks = document.querySelectorAll('a[href^="#"]');
+            allAnchorLinks.forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+
+                    e.preventDefault(); // Onemogoči hipni skok brskalnika
+
+                    // Če je mobilni meni odprt, ga zapremo
+                    if (mobileMenu && mobileMenu.classList.contains('open')) {
+                        closeMenu();
+                    }
+
+                    if (targetId === '#' || targetId === '#top') {
+                        // Klik na logo / vrh strani
+                        smoothScrollTo(0, 1000);
+                    } else {
+                        // Klik na ostale sekcije (#nastopajoci, #galerija, #info)
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            const headerOffset = 80; // Odmik za fiksni header
+                            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                            smoothScrollTo(targetPosition, 1000);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
